@@ -4,30 +4,43 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use App\Services\Auth\AuthService;
+
 class AuthController extends Controller
 {
-    Route::post('/sanctum/token', function (Request $request) {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'device_name' => 'required',
-        ]);
-    
-        $user = User::where('email', $request->email)->first();
-    
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
-    
-        return $user->createToken($request->device_name)->plainTextToken;
-    });
+
+    private $user;
+    private $authService;
+
+    public function __construct(Request $request)
+    {
+        // $this->user = $request->user();
+        $this->authService = new AuthService();
+    }
+
+    public function login(Request $request)
+    {
+        return $this->authService->login($request);
+    }
+
+    public function getUserData(Request $request)
+    {
+        return $this->authService->getUserDetails($request);
+    }
+
+    public function logout(Request $request)
+    {
+        return $this->authService->logout($request);
+    }
+
+    public function registerSeller(Request $request)
+    {
+        return $this->authService->registerSeller($request);
+    }
+
+    public function verifySeller(Request $request)
+    {
+        return $this->authService->verifySeller($request);
+    }
+
 }
-
-
-
-
