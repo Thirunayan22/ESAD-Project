@@ -1,56 +1,42 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
-use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 /*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+  |--------------------------------------------------------------------------
+  | API Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register API routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | is assigned the "api" middleware group. Enjoy building your API!
+  |
+ */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/login/token', [App\Http\Controllers\Auth\AuthController::class, 'login']);
+Route::post('/register/seller', [App\Http\Controllers\Auth\AuthController::class, 'registerSeller']);
 
 
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    //regular
+    Route::get('/user', [App\Http\Controllers\Auth\AuthController::class, 'getUserData']);
+    Route::get('/roles', [App\Http\Controllers\Auth\RolesController::class, 'getRoles']);
+    Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout']);
+    Route::post('/register/verify', [App\Http\Controllers\Auth\AuthController::class, 'verifySeller']);
+
+    //admin user management
+    Route::post('/usermgt/create', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistCreate']);
+    Route::get('/usermgt/users', [App\Http\Controllers\Admin\AdminController::class, 'getUsers']);
+    Route::get('/usermgt/users/byid/{id}', [App\Http\Controllers\Admin\AdminController::class, 'getUserById']);
+    Route::put('/usermgt/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistUpdate']);
 
 
-
-Route::post('/sanctum/token', function (Request $request) {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required',
-    ]);
-
-    $user = User::where('email', $request->email)->first();
-
-    if (! $user || ! Hash::check($request->password, $user->password)) {
-        throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
-    }
-
-    $token = $user->createToken($request->device_name)->plainTextToken;
-
-    $response = [
-        'user'=> $user,
-        'token'=>$token
-    ];
-    return response($response);
+    //role related
+    Route::get('/roles', [App\Http\Controllers\Auth\RolesController::class, 'getRoles']);
+    Route::get('/roles/byid/{id}', [App\Http\Controllers\Auth\RolesController::class, 'getRoleById']);
+    Route::get('/roles/byname/{name}', [App\Http\Controllers\Auth\RolesController::class, 'getByName']);
+    Route::post('/roles', [App\Http\Controllers\Auth\RolesController::class, 'create']);
+    Route::put('/roles/{id}', [App\Http\Controllers\Auth\RolesController::class, 'update']);
+    Route::delete('/roles/{id}', [App\Http\Controllers\Auth\RolesController::class, 'delete']);
 });
