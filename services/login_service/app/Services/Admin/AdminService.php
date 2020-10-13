@@ -7,10 +7,10 @@
 namespace App\Services\Admin;
 
 use App\Models\User;
+use App\Models\SellerDetail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Exception;
-use Illuminate\Validation\ValidationException;
 
 class AdminService
 {
@@ -220,7 +220,6 @@ class AdminService
                 throw new Exception($idValidation->getMessage(), $idValidation->getCode());
             }
 
-            dd($id);
             $request->validate([
                 'name' => 'required|string|min:6|max:255',
                 'role_id' => 'required|exists:roles,id',
@@ -248,6 +247,9 @@ class AdminService
             DB::commit();
 
             addToLog('User update name: ' . $request->name, $this->enumSuccess);
+            $roleData = roleData($request->role_id);
+            $userExist->entered_password = $request->password;
+            $userExist->role_data = $roleData;
 
             return response()->json([
                         'data' => $userExist,
@@ -255,7 +257,6 @@ class AdminService
             ]);
         } catch (Exception $exception) {
             DB::rollBack();
-            dd($exception);
             addToLog($exception->getMessage());
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }
@@ -274,38 +275,115 @@ class AdminService
                 throw new Exception($idValidation->getMessage(), $idValidation->getCode());
             }
 
-            $roleExist = Role::where([['id', '=', $id]])->first();
+            $userExist = User::where([['id', '=', $id]])->first();
 
-            if (!$roleExist) {
-                throw new Exception("ROLE_NOT_AVAILABLE", getStatusCodes('EXCEPTION'));
+            if (!$userExist) {
+                throw new Exception("USER_NOT_AVAILABLE", getStatusCodes('EXCEPTION'));
             }
 
 
-            $children = Role::where('id', '=', $id)
-                    ->with('users')
+            $children = User::where('id', '=', $id)
+                    ->with('seller_details')
                     ->get();
 
             $totalNumberOfChild = 0;
             foreach ($children as $child) {
-                $totalNumberOfChild += sizeof($child->getRelations()["users"]);
+                $totalNumberOfChild += sizeof($child->getRelations()["seller_details"]);
             }
 
 
             if ($totalNumberOfChild > 0) {
-                throw new Exception("ROLE_CAN_NOT_DELETE_RELATION_DATA_AVAILABLE", getStatusCodes('EXCEPTION'));
+                throw new Exception("USER_CAN_NOT_DELETE_RELATION_DATA_AVAILABLE", getStatusCodes('EXCEPTION'));
             }
 
 //            $roleExist->delete();
 //            DB::commit();
 
-            addToLog('role delete success id - ' . $id, $this->enumSuccess);
+            addToLog('user delete success id - ' . $id, $this->enumSuccess);
             return response()->json([
-                        'message' => 'ROLE_DELETE_OK'
+                        'message' => 'USER_DELETE_OK'
             ]);
         } catch (Exception $exception) {
             DB::rollBack();
             addToLog($exception->getMessage());
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
+    }
+
+    public function pendingVerifications($request)
+    {
+        DB::beginTransaction();
+        try {
+
+            if (!permissionLevelCheck('ADMINS_ONLY', $request->user()->role_id)) {
+                throw new Exception("ACCESS_DENIED", getStatusCodes('UNAUTHORIZED'));
+            }
+
+
+            $inactive = app('config')->get("enum.common.verify_status")['NOT_VERIFIED'];
+
+            $docExist = SellerDetail::where('verify_status', '=', $inactive)
+                    ->select(['id', 'user_id', 'verify_status', 'document'])
+                    ->with('user:id,name')
+                    ->paginate(getGlobalSettingByName('DEFAULT_ITEMS_PER_PAGE'));
+
+            if (!$docExist) {
+                throw new Exception("VERIFICATION_DATA_NOT_AVAILBLE", getStatusCodes('EXCEPTION'));
+            }
+
+
+            addToLog('view verification step 2 completed: ' . $request->user()->id, $this->enumSuccess);
+
+            return response()->json([
+                        'data' => $docExist,
+                        'message' => 'GET_PENDING_DOCUMENTS_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode() == 0 ? getStatusCodes('VALIDATION_ERROR') : $exception->getCode());
+        }
+    }
+
+    public function verifySellerByAdmin($request, $id)
+    {
+        DB::beginTransaction();
+        try {
+
+            if (!permissionLevelCheck('ADMINS_ONLY', $request->user()->role_id)) {
+                throw new Exception("ACCESS_DENIED", getStatusCodes('UNAUTHORIZED'));
+            }
+
+            $active = app('config')->get("enum.common.verify_status")['VERIFIED'];
+            $inactive = app('config')->get("enum.common.verify_status")['NOT_VERIFIED'];
+            $request->validate([
+                'verify_status' => 'required|in:' . $active . ',' . $inactive . '',
+                'verify_status.required' => 'VERIFY_STATUS_REQUIRED',
+                'verify_status.in' => 'VERIFY_STATUS_REQUIRED'
+            ]);
+
+            $docExist = SellerDetail::where('id', '=', $id)
+                    ->first();
+
+            if (!$docExist) {
+                throw new Exception("VERIFICATION_DATA_NOT_AVAILBLE", getStatusCodes('EXCEPTION'));
+            }
+
+
+            $docExist->verify_status = $request->verify_status;
+            $docExist->save();
+            DB::commit();
+
+            addToLog('admin verification step 2 completed: ' . $request->user()->id, $this->enumSuccess);
+
+            return response()->json([
+                        'data' => $docExist,
+                        'message' => 'DOCUMENT_VERIFIED_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode() == 0 ? getStatusCodes('VALIDATION_ERROR') : $exception->getCode());
         }
     }
 

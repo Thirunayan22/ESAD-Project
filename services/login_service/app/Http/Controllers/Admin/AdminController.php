@@ -51,9 +51,8 @@ class AdminController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function adminAssistUpdate($request, $id)
+    public function adminAssistUpdate(Request $request, $id)
     {
-        dd($id);
         return $this->adminService->adminAssistUpdate($request, $id);
     }
 
@@ -63,6 +62,22 @@ class AdminController extends Controller
     public function delete($id)
     {
         return $this->adminService->delete($id);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function pendingVerifications(Request $request)
+    {
+        return $this->adminService->pendingVerifications($request);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function verifySellerByAdmin(Request $request, $id)
+    {
+        return $this->adminService->verifySellerByAdmin($request, $id);
     }
 
 }
