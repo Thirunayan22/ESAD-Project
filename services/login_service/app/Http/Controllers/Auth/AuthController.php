@@ -38,9 +38,19 @@ class AuthController extends Controller
         return $this->authService->registerSeller($request);
     }
 
+    public function registerBuyer(Request $request)
+    {
+        return $this->authService->registerBuyer($request);
+    }
+
     public function verifySeller(Request $request)
     {
         return $this->authService->verifySeller($request);
+    }
+
+    public function getVerifySellerStatus(Request $request)
+    {
+        return $this->authService->getVerifySellerStatus($request);
     }
 
 }

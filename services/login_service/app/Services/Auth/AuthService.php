@@ -22,34 +22,90 @@ class AuthService
 
     public function registerSeller(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'password' => 'required|min:8',
-            'device_name' => 'required',
-        ]);
+        DB::beginTransaction();
+        try {
 
-        $userCheck = User::where('email', $request->email)->first();
-        if ($userCheck) {
-            throw ValidationException::withMessages([
-                'email' => ['You can not use this email, use a different one.'],
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'password' => 'required|min:8',
+                'device_name' => 'required',
             ]);
+
+            $userCheck = User::where('email', $request->email)->first();
+            if ($userCheck) {
+                throw ValidationException::withMessages([
+                    'email' => ['You can not use this email, use a different one.'],
+                ]);
+            }
+
+            $userInst = new User();
+            $userInst->name = $request->name;
+            $userInst->email = $request->email;
+            $userInst->role_id = roleNames('SELLER')->id;
+            $userInst->password = Hash::make($request->password);
+            $userInst->created_at = now();
+            $userInst->save();
+            DB::commit();
+            $token = $userInst->createToken($request->device_name)->plainTextToken;
+
+            $response = [
+                'user' => $userInst,
+                'token' => $token
+            ];
+            return response()->json([
+                        'data' => $response,
+                        'message' => 'REGISTERED_AS_SELLER_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode() == 0 ? getStatusCodes('VALIDATION_ERROR') : $exception->getCode());
         }
+    }
 
-        $userInst = new User();
-        $userInst->name = $request->name;
-        $userInst->email = $request->email;
-        $userInst->role_id = roleNames('SELLER')->id;
-        $userInst->password = Hash::make($request->password);
-        $userInst->created_at = now();
-        $userInst->save();
-        $token = $userInst->createToken($request->device_name)->plainTextToken;
+    public function registerBuyer(Request $request)
+    {
+        DB::beginTransaction();
+        try {
 
-        $response = [
-            'user' => $userInst,
-            'token' => $token
-        ];
-        return response($response, 200);
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'password' => 'required|min:8',
+                'device_name' => 'required',
+            ]);
+
+            $userCheck = User::where('email', $request->email)->first();
+            if ($userCheck) {
+                throw ValidationException::withMessages([
+                    'email' => ['You can not use this email, use a different one.'],
+                ]);
+            }
+
+            $userInst = new User();
+            $userInst->name = $request->name;
+            $userInst->email = $request->email;
+            $userInst->role_id = roleNames('BUYER')->id;
+            $userInst->password = Hash::make($request->password);
+            $userInst->created_at = now();
+            $userInst->save();
+            DB::commit();
+            $token = $userInst->createToken($request->device_name)->plainTextToken;
+
+            $response = [
+                'user' => $userInst,
+                'token' => $token
+            ];
+            return response()->json([
+                        'data' => $response,
+                        'message' => 'REGISTERED_AS_BUYER_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode() == 0 ? getStatusCodes('VALIDATION_ERROR') : $exception->getCode());
+        }
     }
 
     public function login(Request $request)
@@ -103,8 +159,8 @@ class AuthService
             }
 
 
-            if (roleData('SELLER')->id != $user->role_id) {
-                throw new Exception("USER_NOT_A_SELLER", getStatusCodes('EXCEPTION'));
+            if (!permissionLevelCheck('SELLER_ONLY', $request->user()->role_id)) {
+                throw new Exception("ACCESS_DENIED", getStatusCodes('UNAUTHORIZED'));
             }
 
             $docExist = SellerDetail::where('document', '=', $request->br_doc)
@@ -115,22 +171,56 @@ class AuthService
                 throw new Exception("ALREADY_VERIFIED", getStatusCodes('EXCEPTION'));
             }
 
-            $roleInst = New SellerDetail();
-            $roleInst->user_id = $user->id;
-            $roleInst->document = $request->br_doc;
-            $roleInst->created_at = now();
-            $roleInst->save();
+            $detailInst = New SellerDetail();
+            $detailInst->user_id = $user->id;
+            $detailInst->document = $request->br_doc;
+            $detailInst->created_at = now();
+            $detailInst->save();
             DB::commit();
 
-            addToLog('serller verification step 2 completed: ' . $user->id, $this->enumSuccess);
+            addToLog('seller verification step 2 completed: ' . $user->id, $this->enumSuccess);
 
             return response()->json([
-                        'data' => $roleInst,
+                        'data' => $detailInst,
                         'message' => 'DOCUMENT_SUBMIT_OK'
             ]);
         } catch (Exception $exception) {
             DB::rollBack();
-            dd($exception);
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode());
+        }
+    }
+
+    public function getVerifySellerStatus(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+
+            $user = $request->user();
+
+            if (!$user) {
+                throw new Exception("USER_NOT_EXISTS", getStatusCodes('EXCEPTION'));
+            }
+
+            if (!permissionLevelCheck('SELLER_ONLY', $request->user()->role_id)) {
+                throw new Exception("ACCESS_DENIED", getStatusCodes('UNAUTHORIZED'));
+            }
+
+            $docExist = SellerDetail::where('user_id', '=', $user->id)
+                    ->first();
+
+            if (!$docExist) {
+                throw new Exception("CANNOT_FIND_VERIFICATION_DETAILS", getStatusCodes('EXCEPTION'));
+            }
+
+            addToLog('seller verification step 2 checked: ' . $user->id, $this->enumSuccess);
+
+            return response()->json([
+                        'data' => $docExist,
+                        'message' => 'GET_VERIFICATION_DETAILS_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
             addToLog($exception->getMessage());
             return response()->json(['message' => $exception->getMessage()], $exception->getCode());
         }

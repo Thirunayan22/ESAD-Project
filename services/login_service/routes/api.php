@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login/token', [App\Http\Controllers\Auth\AuthController::class, 'login']);
 Route::post('/register/seller', [App\Http\Controllers\Auth\AuthController::class, 'registerSeller']);
+Route::post('/register/buyer', [App\Http\Controllers\Auth\AuthController::class, 'registerBuyer']);
 
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -24,12 +25,18 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/roles', [App\Http\Controllers\Auth\RolesController::class, 'getRoles']);
     Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout']);
     Route::post('/register/verify', [App\Http\Controllers\Auth\AuthController::class, 'verifySeller']);
+    Route::get('/register/verify', [App\Http\Controllers\Auth\AuthController::class, 'getVerifySellerStatus']);
 
     //admin user management
     Route::post('/usermgt/create', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistCreate']);
     Route::get('/usermgt/users', [App\Http\Controllers\Admin\AdminController::class, 'getUsers']);
     Route::get('/usermgt/users/byid/{id}', [App\Http\Controllers\Admin\AdminController::class, 'getUserById']);
     Route::put('/usermgt/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistUpdate']);
+    Route::delete('/usermgt/delete/{id}', [App\Http\Controllers\Admin\AdminController::class, 'delete']);
+
+    //registration step 2 check
+    Route::get('/usermgt/verify', [App\Http\Controllers\Admin\AdminController::class, 'pendingVerifications']);
+    Route::put('/usermgt/verify/{id}', [App\Http\Controllers\Admin\AdminController::class, 'verifySellerByAdmin']);
 
 
     //role related
