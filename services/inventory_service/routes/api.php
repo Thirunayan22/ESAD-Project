@@ -13,37 +13,28 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-Route::post('/login/token', [App\Http\Controllers\Auth\AuthController::class, 'login']);
-Route::post('/register/seller', [App\Http\Controllers\Auth\AuthController::class, 'registerSeller']);
-Route::post('/register/buyer', [App\Http\Controllers\Auth\AuthController::class, 'registerBuyer']);
+//category
 
+Route::get('/inventory/category', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllCategories']);
+Route::get('/inventory/category/nested/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllNestedCategories']);
+Route::get('/inventory/category/withproducts/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllWithProducts']);
+Route::post('/inventory/category', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'create']);
+Route::put('/inventory/category/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'update']);
+Route::delete('/inventory/category/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'delete']);
 
-Route::group(['middleware' => 'auth:sanctum'], function () {
+//product
+Route::get('/inventory/products', [App\Http\Controllers\Inventory\ProductsController::class, 'getAllProducts']);
+Route::get('/inventory/products/byid/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'getById']);
+Route::get('/inventory/products/byname/{name}', [App\Http\Controllers\Inventory\ProductsController::class, 'getByName']);
+Route::post('/inventory/products', [App\Http\Controllers\Inventory\ProductsController::class, 'create']);
+Route::put('/inventory/products/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'update']);
+Route::delete('/inventory/products/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'delete']);
 
-    //regular
-    Route::get('/user', [App\Http\Controllers\Auth\AuthController::class, 'getUserData']);
-    Route::get('/roles', [App\Http\Controllers\Auth\RolesController::class, 'getRoles']);
-    Route::post('/logout', [App\Http\Controllers\Auth\AuthController::class, 'logout']);
-    Route::post('/register/verify', [App\Http\Controllers\Auth\AuthController::class, 'verifySeller']);
-    Route::get('/register/verify', [App\Http\Controllers\Auth\AuthController::class, 'getVerifySellerStatus']);
+//productinfo
+Route::post('/inventory/productinfo', [App\Http\Controllers\Inventory\ProductInfoController::class, 'create']);
+Route::get('/inventory/productinfo/byid/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'getById']);
+Route::put('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'update']);
+Route::delete('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'delete']);
 
-    //admin user management
-    Route::post('/usermgt/create', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistCreate']);
-    Route::get('/usermgt/users', [App\Http\Controllers\Admin\AdminController::class, 'getUsers']);
-    Route::get('/usermgt/users/byid/{id}', [App\Http\Controllers\Admin\AdminController::class, 'getUserById']);
-    Route::put('/usermgt/update/{id}', [App\Http\Controllers\Admin\AdminController::class, 'adminAssistUpdate']);
-    Route::delete('/usermgt/delete/{id}', [App\Http\Controllers\Admin\AdminController::class, 'delete']);
-
-    //registration step 2 check
-    Route::get('/usermgt/verify', [App\Http\Controllers\Admin\AdminController::class, 'pendingVerifications']);
-    Route::put('/usermgt/verify/{id}', [App\Http\Controllers\Admin\AdminController::class, 'verifySellerByAdmin']);
-
-
-    //role related
-    Route::get('/roles', [App\Http\Controllers\Auth\RolesController::class, 'getRoles']);
-    Route::get('/roles/byid/{id}', [App\Http\Controllers\Auth\RolesController::class, 'getRoleById']);
-    Route::get('/roles/byname/{name}', [App\Http\Controllers\Auth\RolesController::class, 'getByName']);
-    Route::post('/roles', [App\Http\Controllers\Auth\RolesController::class, 'create']);
-    Route::put('/roles/{id}', [App\Http\Controllers\Auth\RolesController::class, 'update']);
-    Route::delete('/roles/{id}', [App\Http\Controllers\Auth\RolesController::class, 'delete']);
-});
+//Route::group(['middleware' => 'auth:sanctum'], function () {
+//});
