@@ -36,5 +36,8 @@ Route::get('/inventory/productinfo/byid/{id}', [App\Http\Controllers\Inventory\P
 Route::put('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'update']);
 Route::delete('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'delete']);
 
+//cart related
+Route::put('/inventory/productinfo/cart/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'quantityUpdate']);
+
 //Route::group(['middleware' => 'auth:sanctum'], function () {
 //});

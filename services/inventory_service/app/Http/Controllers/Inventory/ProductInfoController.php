@@ -43,6 +43,14 @@ class ProductInfoController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function quantityUpdate(Request $request, $id)
+    {
+        return $this->productInfoService->quantityUpdate($request, $id);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function delete(Request $request, $id)
     {
         return $this->productInfoService->delete($request, $id);

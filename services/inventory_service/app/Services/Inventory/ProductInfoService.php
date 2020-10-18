@@ -202,6 +202,58 @@ class ProductInfoService
     /**
      * {@inheritdoc}
      */
+    public function quantityUpdate($request, $id)
+    {
+
+        DB::beginTransaction();
+        try {
+
+            $idValidation = checkDataType($id);
+
+            if ($idValidation instanceof Exception) {
+                throw new Exception($idValidation->getMessage(), $idValidation->getCode());
+            }
+
+            $authApi = new ConnectAuthService();
+            $userData = $authApi->getUserDetails($request);
+
+            if (!permissionLevelCheck('BUYER_ONLY', $userData['role_id'])) {
+                throw new Exception("BUYER_ONLY", getStatusCodes('UNAUTHORIZED'));
+            }
+
+            $productInfoInst = PrProductInfo::where('id', '=', $id)->first();
+
+            if (!$productInfoInst) {
+                throw new Exception("PRODUCT_NOT_AVAILABLE", getStatusCodes('EXCEPTION'));
+            }
+
+            $request->validate([
+                'quatity' => 'required|numeric|min:0',
+            ]);
+
+            if ($productInfoInst->quatity < $request->quatity) {
+                throw new Exception("PRODUCT_QUANTITY_NOT_AVAILABLE", getStatusCodes('EXCEPTION'));
+            }
+            $productInfoInst->quatity = $productInfoInst->quatity - $request->quatity;
+            $productInfoInst->save();
+            DB::commit();
+
+            addToLog('PRODUCT quantity update product_id: ' . $id, $this->enumSuccess);
+
+            return response()->json([
+                        'data' => $productInfoInst,
+                        'message' => 'PRODUCT_QUANTITY_UPDATE_OK'
+            ]);
+        } catch (Exception $exception) {
+            DB::rollBack();
+            addToLog($exception->getMessage());
+            return response()->json(['message' => $exception->getMessage()], $exception->getCode() == 0 ? getStatusCodes('VALIDATION_ERROR') : $exception->getCode());
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function delete($request, $id)
     {
         DB::beginTransaction();
