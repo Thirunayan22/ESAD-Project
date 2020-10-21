@@ -12,14 +12,14 @@ class ConnectAuthService
     public function getUserDetails(Request $request)
     {
         try {
-//            $authApi = 'http://127.0.0.1:8001/api/user';
-//            $response = Http::withHeaders($request->headers->all())->get($authApi);
-//
-//            if (!$response->successful()) {
-//                throw new Exception("ERROR_RETURNED_FROM_FROM_AUTH_SERVICE", getStatusCodes('EXCEPTION'));
-//            }
-//            $jsonData = $response->json();
-            $jsonData = ["id" => 5, "role_id" => 2];
+            $authApi = 'https://eseller.loca.lt/api/user';
+            $response = Http::withHeaders($request->headers->all())->get($authApi);
+
+            if (!$response->successful()) {
+                throw new Exception("ERROR_RETURNED_FROM_FROM_AUTH_SERVICE", getStatusCodes('EXCEPTION'));
+            }
+            $jsonData = $response->json();
+//            $jsonData = ["id" => 5, "role_id" => 4];
 
             return $jsonData;
         } catch (Exception $exception) {
