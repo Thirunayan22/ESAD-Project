@@ -1,0 +1,3064 @@
+{
+	"info": {
+		"_postman_id": "6099d26c-c9fa-4442-a1a5-9464dfae4929",
+		"name": "SLIIT Export",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth Service",
+			"item": [
+				{
+					"name": "Role",
+					"item": [
+						{
+							"name": "Get all Roles",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"roles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all Roles",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{server}}common/roles",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:43:56 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:43:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"GET_ROLES_OK\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"role_name\": \"admin\",\n                \"role_desc\": \"admin level\"\n            },\n            {\n                \"id\": 2,\n                \"role_name\": \"guest\",\n                \"role_desc\": \"guest user\"\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/common/roles?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/common/roles?page=1\",\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/common/roles\",\n        \"per_page\": \"50\",\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get all Role by Name",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{url}}/api/roles/byname/admin",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"roles",
+										"byname",
+										"admin"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get all Roles",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{server}}common/roles",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:43:56 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:43:56 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"GET_ROLES_OK\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"role_name\": \"admin\",\n                \"role_desc\": \"admin level\"\n            },\n            {\n                \"id\": 2,\n                \"role_name\": \"guest\",\n                \"role_desc\": \"guest user\"\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/common/roles?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/common/roles?page=1\",\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/common/roles\",\n        \"per_page\": \"50\",\n        \"prev_page_url\": null,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Role by id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}common/roles/byid/2",
+									"host": [
+										"{{server}}common"
+									],
+									"path": [
+										"roles",
+										"byid",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get Role by id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{server}}common/roles/byid/2",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles",
+												"byid",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 24 Jan 2020 19:30:34 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 24 Jan 2020 19:30:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"GET_ROLE_BY_ID_OK\",\n    \"data\": {\n        \"id\": 2,\n        \"role_name\": \"guest\",\n        \"role_desc\": \"guest user\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Create Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"role_name\":\"INVOICE_USER\",\n\t\"role_desc\" : \"user for the invoice\",\n\t\"branch_id\":1\n\t\n}"
+								},
+								"url": {
+									"raw": "{{server}}common/roles",
+									"host": [
+										"{{server}}common"
+									],
+									"path": [
+										"roles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Create Role",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"role_name\":\"INVOICE_USER\",\n\t\"role_desc\" : \"user for the invoice\",\n\t\"branch_id\":1\n\t\n}"
+										},
+										"url": {
+											"raw": "{{server}}common/roles",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:53:37 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:53:37 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"ROLE_EXISTS\"\n}"
+								},
+								{
+									"name": "Create Role",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"role_name\":\"INVOICE_USER\",\n\t\"role_desc\" : \"user for the invoice\",\n\t\"branch_id\":1\n\t\n}"
+										},
+										"url": {
+											"raw": "{{server}}common/roles",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:52:04 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:52:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"settings\": {\n        \"role_name\": \"INVOICE_USER\",\n        \"role_desc\": \"user for the invoice\",\n        \"branch_id\": 1,\n        \"created_by\": 3,\n        \"modified_by\": 3,\n        \"created_at\": \"2020-01-15T15:52:04.677736Z\",\n        \"id\": 3\n    },\n    \"message\": \"ROLE_CREATE_OK\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"role_name\":\"INVOICE_USER\",\n\t\"role_desc\" : \"user for the invoice module\",\n\t\"branch_id\":1\n}"
+								},
+								"url": {
+									"raw": "{{server}}common/roles/3",
+									"host": [
+										"{{server}}common"
+									],
+									"path": [
+										"roles",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update Role",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"role_name\":\"INVOICE_USER\",\n\t\"role_desc\" : \"user for the invoice module\",\n\t\"branch_id\":1\n}"
+										},
+										"url": {
+											"raw": "{{server}}common/roles/3",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:57:21 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 15:57:21 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"settings\": {\n        \"id\": 3,\n        \"role_name\": \"INVOICE_USER\",\n        \"role_desc\": \"user for the invoice module\",\n        \"branch_id\": 1,\n        \"created_by\": 3,\n        \"created_at\": \"2020-01-15 15:52:04\",\n        \"modified_by\": 3,\n        \"modified_at\": \"2020-01-15 21:22:04\"\n    },\n    \"message\": \"ROLE_UPDATE_OK\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Role",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{server}}common/roles/1",
+									"host": [
+										"{{server}}common"
+									],
+									"path": [
+										"roles",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Role",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{server}}common/roles/3",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles",
+												"3"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:00:51 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:00:51 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"ROLE_NOT_AVAILABLE\"\n}"
+								},
+								{
+									"name": "Delete Role",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{server}}common/roles/1",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles",
+												"1"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:01:00 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:01:00 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"ROLE_CAN_NOT_DELETE_RELATION_DATA_AVAILABLE\"\n}"
+								},
+								{
+									"name": "Delete Role",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{server}}common/roles/3",
+											"host": [
+												"{{server}}common"
+											],
+											"path": [
+												"roles",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:00:45 +0000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Jan 2020 16:00:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.2.9"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Access-Control-Allow-Methods",
+											"value": "GET, POST, PUT, DELETE, OPTIONS"
+										},
+										{
+											"key": "Access-Control-Allow-Headers",
+											"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"ROLE_DELETE_OK\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"buyer@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"device_name\" : \"mobile\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/login/token",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"login",
+										"token"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\":\"abcd@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"device_name\" : \"mobile\"\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/login/token",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"login",
+												"token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 11 Oct 2020 16:26:05 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 11 Oct 2020 16:26:05 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.4.3"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": ""
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Access-Control-Allow-Credentials",
+											"value": "true"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"user\": {\n        \"id\": 21,\n        \"role_id\": 2,\n        \"name\": \"nuwan ishara\",\n        \"email\": \"abcd@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2020-10-11T13:10:00.000000Z\",\n        \"updated_at\": \"2020-10-11T13:10:00.000000Z\"\n    },\n    \"token\": \"50|cFl02QMJ8PIrALK9UmoivHKmYLrW5iL04xDs57F8\"\n}"
+								}
+							]
+						},
+						{
+							"name": "user details",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {
+									"accept": true
+								}
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Registration",
+					"item": [
+						{
+							"name": "Seller",
+							"item": [
+								{
+									"name": "seller Registration",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"nuwan ishara\",\r\n    \"email\":\"abca@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"device_name\":\"mobile\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/register/seller",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"register",
+												"seller"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "seller Registration Step 2",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/register/verify",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"register",
+												"verify"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "seller Registration Step 2",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/api/register/verify",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"register",
+														"verify"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"user_id\": 5,\n        \"document\": \"nuwan ishara\",\n        \"created_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"updated_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"id\": 1\n    },\n    \"message\": \"DOCUMENT_SUBMIT_OK\"\n}"
+										}
+									]
+								},
+								{
+									"name": "view seller Registration Status",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/register/verify",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"register",
+												"verify"
+											]
+										},
+										"description": "check your own verification details"
+									},
+									"response": [
+										{
+											"name": "view seller Registration Status",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/api/register/verify",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"register",
+														"verify"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 13 Oct 2020 23:03:04 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 13 Oct 2020 23:03:04 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"user_id\": 5,\n        \"verify_status\": false,\n        \"document\": \"SADVASVAV\",\n        \"created_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"updated_at\": \"2020-10-13T05:40:02.000000Z\"\n    },\n    \"message\": \"GET_VERIFICATION_DETAILS_OK\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Buyer",
+							"item": [
+								{
+									"name": "buyer Registration",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"nuwan ishara\",\r\n    \"email\":\"buyer@gmail.com\",\r\n    \"password\":\"123456789\",\r\n    \"device_name\":\"mobile\"    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/register/buyer",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"register",
+												"buyer"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Admin Task",
+					"item": [
+						{
+							"name": "User Management",
+							"item": [
+								{
+									"name": "Create User",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":4,\n    \"email\":\"abce@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/create",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"create"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Create User - error",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":4,\n    \"email\":\"abce@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/create",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"create"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:28:41 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:28:41 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"EMAIL_ALREADY_IN_USE\"\n}"
+										},
+										{
+											"name": "Create User",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":4,\n    \"email\":\"abce@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/create",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"create"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:25:03 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:25:03 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "55"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"name\": \"nuwan ishara\",\n        \"email\": \"abce@gmail.com\",\n        \"role_id\": 4,\n        \"created_at\": \"2020-10-11T16:25:03.000000Z\",\n        \"updated_at\": \"2020-10-11T16:25:03.000000Z\",\n        \"id\": 22,\n        \"entered_password\": \"123456789\",\n        \"role_data\": {\n            \"id\": 4,\n            \"role_name\": \"buyer\"\n        }\n    },\n    \"message\": \"USER_CREATE_OK\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Update User",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"nuwan ishara123\",\n    \"role_id\":3,\n    \"email\":\"abce@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/update/22",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"update",
+												"22"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Update User",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\":\"nuwan ishara123\",\n    \"role_id\":3,\n    \"email\":\"abce@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/update/22",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"update",
+														"22"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 12 Oct 2020 22:42:18 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Mon, 12 Oct 2020 22:42:18 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"role_id\": 3,\n        \"name\": \"nuwan ishara123\",\n        \"email\": \"abce@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2020-10-12T22:42:18.000000Z\",\n        \"updated_at\": \"2020-10-12T22:42:18.000000Z\",\n        \"entered_password\": \"123456789\",\n        \"role_data\": {\n            \"id\": 3,\n            \"role_name\": \"seller\"\n        }\n    },\n    \"message\": \"USER_UPDATE_OK\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get All Users",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":2,\n    \"email\":\"abcd@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"users"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Create User",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":2,\n    \"email\":\"abcd@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/create",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"create"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 13:10:00 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 13:10:00 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"name\": \"nuwan ishara\",\n        \"email\": \"abcd@gmail.com\",\n        \"role_id\": 2,\n        \"created_at\": \"2020-10-11T13:10:00.000000Z\",\n        \"updated_at\": \"2020-10-11T13:10:00.000000Z\",\n        \"id\": 21,\n        \"entered_password\": \"123456789\",\n        \"role_data\": {\n            \"id\": 2,\n            \"role_name\": \"admin_assist\"\n        }\n    },\n    \"message\": \"USER_CREATE_OK\"\n}"
+										},
+										{
+											"name": "Get All Users",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\":\"nuwan ishara\",\n    \"role_id\":2,\n    \"email\":\"abcd@gmail.com\",\n    \"password\":\"123456789\",\n    \"device_name\":\"mobile\"    \n}"
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/users",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"users"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:24:06 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:24:06 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"GET_USERS_OK\",\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 5,\n                \"role_id\": 3,\n                \"email\": \"abca@gmail.com\",\n                \"name\": \"nuwan ishara\",\n                \"role\": {\n                    \"id\": 3,\n                    \"role_name\": \"seller\"\n                }\n            }\n        ],\n        \"first_page_url\": \"http://127.0.0.1:8000/api/usermgt/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://127.0.0.1:8000/api/usermgt/users?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/usermgt/users?page=1\",\n                \"label\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://127.0.0.1:8000/api/usermgt/users\",\n        \"per_page\": 10,\n        \"prev_page_url\": null,\n        \"to\": 1,\n        \"total\": 1\n    }\n}"
+										},
+										{
+											"name": "Create User",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n\t\"user_name\":\"nuwan_rep3\",\n\t\"email\": \"test_customer22_@gmail.com\",\n\t\"password_confirmation\":\"123456\",\n\t\"first_name\": \"test_rep\",\n\t\"last_name\": \"test_rep_lastname\",\n\t\"surname\": \"test_rep_surname\",\n\t\"address_line_1\": \"test_rep_addres1\",\n\t\"address_line_2\": \"test_rep_addres2\",\n\t\"country_id\": 1,\n\t\"region_id\": 1,\n\t\"city_id\": 1,\n\t\"postal_code\": 89000,\n\t\"dob\": \"2019-06-30\",\n\t\"nic\": \"900480090v\",\n\t\"profile_image\": \"test_rep_image\",\n\t\"app_login\":0\n\t\n}"
+												},
+												"url": {
+													"raw": "{{server}}users/",
+													"host": [
+														"{{server}}users"
+													],
+													"path": [
+														""
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 14 Jan 2020 09:29:02 +0000"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 14 Jan 2020 09:29:02 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.9"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "54"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Access-Control-Allow-Methods",
+													"value": "GET, POST, PUT, DELETE, OPTIONS"
+												},
+												{
+													"key": "Access-Control-Allow-Headers",
+													"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"user_name\": \"nuwan_rep3\",\n        \"email\": \"test_customer22_@gmail.com\",\n        \"last_name\": \"test_rep_lastname\",\n        \"first_name\": \"test_rep\",\n        \"app_login_status\": 0,\n        \"surname\": \"test_rep_surname\",\n        \"address_line_1\": \"test_rep_addres1\",\n        \"address_line_2\": \"test_rep_addres2\",\n        \"country_id\": 1,\n        \"region_id\": 1,\n        \"city_id\": 1,\n        \"postal_code\": 89000,\n        \"nic\": \"900480090v\",\n        \"date_of_birth\": \"2019-06-30 00:00:00\",\n        \"profile_image\": \"test_rep_image\",\n        \"branch_id\": 1,\n        \"created_by\": 3,\n        \"modified_by\": 3,\n        \"created_at\": \"2020-01-14T09:29:02.657888Z\",\n        \"id\": 10\n    },\n    \"message\": \"USER_CREATE_OK\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get User by id",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/users/byid/22",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"users",
+												"byid",
+												"22"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Get User by id",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{url}}/api/usermgt/users/byid/22",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"usermgt",
+														"users",
+														"byid",
+														"22"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:33:06 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 16:33:06 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"GET_USER_BY_ID_OK\",\n    \"data\": {\n        \"id\": 22,\n        \"role_id\": 4,\n        \"email\": \"abce@gmail.com\",\n        \"name\": \"nuwan ishara\",\n        \"role\": {\n            \"id\": 4,\n            \"role_name\": \"buyer\"\n        }\n    }\n}"
+										}
+									]
+								},
+								{
+									"name": "Delete Role",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/delete/22",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"delete",
+												"22"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Delete Role",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{server}}common/roles/3",
+													"host": [
+														"{{server}}common"
+													],
+													"path": [
+														"roles",
+														"3"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:00:45 +0000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:00:45 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.9"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Access-Control-Allow-Methods",
+													"value": "GET, POST, PUT, DELETE, OPTIONS"
+												},
+												{
+													"key": "Access-Control-Allow-Headers",
+													"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"ROLE_DELETE_OK\"\n}"
+										},
+										{
+											"name": "Delete Role",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{server}}common/roles/1",
+													"host": [
+														"{{server}}common"
+													],
+													"path": [
+														"roles",
+														"1"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:01:00 +0000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:01:00 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.9"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "57"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Access-Control-Allow-Methods",
+													"value": "GET, POST, PUT, DELETE, OPTIONS"
+												},
+												{
+													"key": "Access-Control-Allow-Headers",
+													"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"ROLE_CAN_NOT_DELETE_RELATION_DATA_AVAILABLE\"\n}"
+										},
+										{
+											"name": "Delete Role",
+											"originalRequest": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Content-Type",
+														"name": "Content-Type",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{server}}common/roles/3",
+													"host": [
+														"{{server}}common"
+													],
+													"path": [
+														"roles",
+														"3"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:00:51 +0000"
+												},
+												{
+													"key": "Date",
+													"value": "Wed, 15 Jan 2020 16:00:51 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.2.9"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "58"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												},
+												{
+													"key": "Access-Control-Allow-Methods",
+													"value": "GET, POST, PUT, DELETE, OPTIONS"
+												},
+												{
+													"key": "Access-Control-Allow-Headers",
+													"value": "X-Requested-With, Content-Type, X-Token-Auth, Authorization"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"ROLE_NOT_AVAILABLE\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Admin Assist",
+							"item": [
+								{
+									"name": "Seller Verified by Admin",
+									"protocolProfileBehavior": {
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"verify_status\":1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/verify/1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"verify",
+												"1"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "seller Registration Step 2",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/api/register/verify",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"register",
+														"verify"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"user_id\": 5,\n        \"document\": \"nuwan ishara\",\n        \"created_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"updated_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"id\": 1\n    },\n    \"message\": \"DOCUMENT_SUBMIT_OK\"\n}"
+										}
+									]
+								},
+								{
+									"name": "Get Pending Verifications",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true,
+										"disabledSystemHeaders": {
+											"accept": true
+										}
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"type": "text",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/api/usermgt/verify",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"api",
+												"usermgt",
+												"verify"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "seller Registration Step 2",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"type": "text",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"br_doc\":\"nuwan ishara\"    \r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{url}}/api/register/verify",
+													"host": [
+														"{{url}}"
+													],
+													"path": [
+														"api",
+														"register",
+														"verify"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 11 Oct 2020 10:45:29 GMT"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/7.4.3"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "X-RateLimit-Limit",
+													"value": "60"
+												},
+												{
+													"key": "X-RateLimit-Remaining",
+													"value": "59"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": ""
+												},
+												{
+													"key": "Vary",
+													"value": "Origin"
+												},
+												{
+													"key": "Access-Control-Allow-Credentials",
+													"value": "true"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": {\n        \"user_id\": 5,\n        \"document\": \"nuwan ishara\",\n        \"created_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"updated_at\": \"2020-10-11T10:45:29.000000Z\",\n        \"id\": 1\n    },\n    \"message\": \"DOCUMENT_SUBMIT_OK\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "75a22219-4ef3-4241-9b68-d2d8b4dd1de4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d81b3c4d-0558-4c89-9cc3-5090ae8cf7ea",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
