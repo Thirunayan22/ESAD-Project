@@ -12,7 +12,7 @@ class ConnectAuthService
     public function getUserDetails(Request $request)
     {
         try {
-            $authApi = 'https://odd-seahorse-4.loca.l/api/user';
+            $authApi = 'https://odd-seahorse-4.loca.lt/api/user';
             $response = Http::withHeaders($request->headers->all())->get($authApi);
 
             if (!$response->successful()) {
