@@ -13,31 +13,22 @@ use Illuminate\Support\Facades\Route;
   |
  */
 
-//category
-
-Route::get('/inventory/category', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllCategories']);
-Route::get('/inventory/category/nested/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllNestedCategories']);
-Route::get('/inventory/category/withproducts/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'getAllWithProducts']);
-Route::post('/inventory/category', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'create']);
-Route::put('/inventory/category/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'update']);
-Route::delete('/inventory/category/{id}', [App\Http\Controllers\Inventory\ProductsCategoryController::class, 'delete']);
-
-//product
-Route::get('/inventory/products', [App\Http\Controllers\Inventory\ProductsController::class, 'getAllProducts']);
-Route::get('/inventory/products/byid/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'getById']);
-Route::get('/inventory/products/byname/{name}', [App\Http\Controllers\Inventory\ProductsController::class, 'getByName']);
-Route::post('/inventory/products', [App\Http\Controllers\Inventory\ProductsController::class, 'create']);
-Route::put('/inventory/products/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'update']);
-Route::delete('/inventory/products/{id}', [App\Http\Controllers\Inventory\ProductsController::class, 'delete']);
+//invoice
+Route::post('/invoice', [App\Http\Controllers\Invoice\InvoiceController::class, 'create']);
+Route::get('/invoice', [App\Http\Controllers\Invoice\InvoiceController::class, 'getAllInvoices']);
+Route::get('/invoice/byid/{id}', [App\Http\Controllers\Invoice\InvoiceController::class, 'getById']);
+Route::get('/invoice/delivery/{id}', [App\Http\Controllers\Invoice\InvoiceController::class, 'delivered']);
+Route::put('/invoice/changestatus/{id}', [App\Http\Controllers\Invoice\InvoiceController::class, 'update']);
+Route::put('/invoice/{id}', [App\Http\Controllers\Invoice\InvoiceController::class, 'delete']);
 
 //productinfo
-Route::post('/inventory/productinfo', [App\Http\Controllers\Inventory\ProductInfoController::class, 'create']);
-Route::get('/inventory/productinfo/byid/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'getById']);
-Route::put('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'update']);
-Route::delete('/inventory/productinfo/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'delete']);
+Route::post('/invoice/invoiceitems', [App\Http\Controllers\Invoice\InvoiceItemsController::class, 'create']);
+Route::get('/invoice/invoiceitems/byid/{id}', [App\Http\Controllers\Invoice\InvoiceItemsController::class, 'getById']);
+Route::put('/invoice/invoiceitems/{id}', [App\Http\Controllers\Invoice\InvoiceItemsController::class, 'update']);
+Route::delete('/invoice/invoiceitems/{id}', [App\Http\Controllers\Invoice\InvoiceItemsController::class, 'delete']);
 
 //cart related
-Route::put('/inventory/productinfo/cart/{id}', [App\Http\Controllers\Inventory\ProductInfoController::class, 'quantityUpdate']);
+Route::put('/invoice/productinfo/cart/{id}', [App\Http\Controllers\Invoice\InvoiceItemsController::class, 'quantityUpdate']);
 
 //Route::group(['middleware' => 'auth:sanctum'], function () {
 //});
