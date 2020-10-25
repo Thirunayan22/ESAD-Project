@@ -134,19 +134,17 @@ class ProductCategoryService
                 throw new Exception("CATEGORY_NOT_AVAILABLE_BY_ID", getStatusCodes('EXCEPTION'));
             }
 
-            $categories = PrCategory::select('id', 'super_cat_id')
+            $categories = PrCategory::select('id', 'category_name', 'super_cat_id')
                     ->get();
 
-            $tree2 = $this->formatTree2($categories, $id);
+//            $tree2 = $this->formatTree2($categories, $id);
+//            $result = $this->arrayFlatten($tree2);
+//            $category->pr_categories = $result;
 
-            $result = $this->arrayFlatten($tree2);
-
-
-            $category->pr_categories = $result;
             addToLog('view all data racks', $this->enumSuccess);
             return response()->json([
                         'message' => 'GET_NESTED_CATEGORIES_OK',
-                        'data' => $category
+                        'data' => $categories
             ]);
         } catch (Exception $exception) {
             addToLog($exception->getMessage());
